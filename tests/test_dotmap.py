@@ -94,5 +94,11 @@ class DotMapTestCase(unittest.TestCase):
         d.pprint()
         self.assertTrue(mock_pretty_printer.called)
 
+    def test_repr(self):
+        d = DotMap(self._get_dict())
+        self.assertTrue(repr(d).startswith('DotMap('))
+        d = DotMap(a='b')
+        self.assertEqual("DotMap(a='b')", repr(d))
+
 if __name__ == '__main__':
     unittest.main()
