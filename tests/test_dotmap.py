@@ -28,7 +28,7 @@ class DotMapTestCase(unittest.TestCase):
     def test_copy(self):
         d = DotMap(self._get_dict())
         c = d.copy()
-        self.assertEqual(d,c)
+        self.assertEqual(d, c)
 
     def test_del(self):
         am = DotMap()
@@ -37,7 +37,7 @@ class DotMapTestCase(unittest.TestCase):
         self.assertEqual(len(am), 1)
 
     def test_fromkeys(self):
-        d = DotMap.fromkeys(['a','b','c'], 'd')
+        d = DotMap.fromkeys(['a', 'b', 'c'], 'd')
         self.assertEqual(d.a, 'd')
         self.assertEqual(d.c, 'd')
 
@@ -49,19 +49,19 @@ class DotMapTestCase(unittest.TestCase):
 
     def test_has_key(self):
         d = DotMap(self._get_dict())
-        self.assertTrue(d.has_key('a'))
+        self.assertTrue(d.  has_key('a'))
         self.assertTrue('a' in d)
         self.assertFalse(d.has_key('f'))
         self.assertFalse('f' in d)
 
     def test_update(self):
         d = DotMap(self._get_dict())
-        d.update([('rat', 5),('bum', 4)], dog=7, cat=9)
+        d.update([('rat', 5), ('bum', 4)], dog=7, cat=9)
         self.assertEqual(d.rat, 5)
         self.assertEqual(d['bum'], 4)
         self.assertEqual(d.dog, 7)
         self.assertEqual(d['cat'], 9)
-        d.update({'lol': 1,'ba': 2})
+        d.update({'lol': 1, 'ba': 2})
         self.assertEqual(d.rat, 5)
         self.assertEqual(d['bum'], 4)
         self.assertEqual(d.dog, 7)

@@ -45,6 +45,7 @@ class DotMap(MutableMapping):
 
     def __setitem__(self, k, v):
         self._map[k] = v
+
     def __getitem__(self, k):
         if k not in self._map:
             # automatically extend to new DotMap
@@ -81,7 +82,7 @@ class DotMap(MutableMapping):
 
     def to_dict(self):
         d = {}
-        for k,v in self.items():
+        for k, v in self.items():
             if type(v) is DotMap:
                 v = v.to_dict()
             d[k] = v
