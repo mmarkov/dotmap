@@ -174,13 +174,22 @@ class DotMap(MutableMapping):
         self._map.update(kwargs)
 
     def viewitems(self):
-        return self._map.viewitems()
+        if version_info.major == 2 and version_info.minor >= 7:
+            return self._map.viewitems()
+        else:
+            return self._map.items()
 
     def viewkeys(self):
-        return self._map.viewkeys()
+        if version_info.major == 2 and version_info.minor >= 7:
+            return self._map.viewkeys()
+        else:
+            return self._map.keys()
 
     def viewvalues(self):
-        return self._map.viewvalues()
+        if version_info.major == 2 and version_info.minor >= 7:
+            return self._map.viewvalues()
+        else:
+            return self._map.values()
 
     @classmethod
     def fromkeys(cls, seq, value=None):

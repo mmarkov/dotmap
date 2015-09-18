@@ -77,5 +77,16 @@ class DotMapTestCase(unittest.TestCase):
         v = d.values()
         self.assertEqual(len(v), 3)
 
+    def test_view_values(self):
+        d = DotMap(self._get_dict())
+        dd = d.to_dict()
+        for k, v in d.viewitems():
+            self.assertTrue(set(dd).issuperset({k: v}))
+        for k in d.viewkeys():
+            self.assertTrue(k in dd)
+        for v in d.viewvalues():
+            self.assertTrue(v in dd.values())
+
+
 if __name__ == '__main__':
     unittest.main()
