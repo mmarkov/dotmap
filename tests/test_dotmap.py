@@ -1,4 +1,5 @@
 import unittest
+from mock import patch
 from dotmap import DotMap
 
 
@@ -87,6 +88,11 @@ class DotMapTestCase(unittest.TestCase):
         for v in d.viewvalues():
             self.assertTrue(v in dd.values())
 
+    @patch('pprint.PrettyPrinter.pprint')
+    def test_pprint(self, mock_pretty_printer):
+        d = DotMap(self._get_dict())
+        d.pprint()
+        self.assertTrue(mock_pretty_printer.called)
 
 if __name__ == '__main__':
     unittest.main()

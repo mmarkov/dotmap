@@ -12,5 +12,5 @@ setup(
     keywords=['dict', 'dot', 'map', 'order', 'ordered', 'ordereddict', 'access', 'dynamic'],  # arbitrary keywords
     classifiers=[],
     test_suite='nose.collector',
-    tests_require=['nose>=0.10.1'],
+    tests_require=['nose>=0.10.1', 'mock>=1.3'],
 )

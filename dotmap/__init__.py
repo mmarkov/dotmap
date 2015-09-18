@@ -89,7 +89,7 @@ class DotMap(MutableMapping):
         return d
 
     def pprint(self):
-        pprint(self.toDict())
+        pprint(self.to_dict())
 
     # proper dict subclassing
     def values(self):
