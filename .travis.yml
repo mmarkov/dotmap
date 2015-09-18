@@ -7,7 +7,12 @@ before_install:
 install:
   - pip install nose
   - pip install coveralls
+  - pip install pep8
+  - pip install flake
+  - pip install flake8
   - python setup.py develop
+before_script:
+  - flake8 .
 script:
   - nosetests --with-coverage --cover-package=dotmap
 after_success:
