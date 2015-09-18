@@ -49,7 +49,7 @@ class DotMapTestCase(unittest.TestCase):
 
     def test_has_key(self):
         d = DotMap(self._get_dict())
-        self.assertTrue(d.  has_key('a'))
+        self.assertTrue(d.has_key('a'))
         self.assertTrue('a' in d)
         self.assertFalse(d.has_key('f'))
         self.assertFalse('f' in d)
