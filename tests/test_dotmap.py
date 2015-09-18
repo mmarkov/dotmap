@@ -14,11 +14,16 @@ class DotMapTestCase(unittest.TestCase):
     def test_init(self):
         d = DotMap(self._get_dict())
         self.assertEqual(len(d), 3)
+        self.assertEqual(d.a, 1)
+        self.assertEqual(d.subD.c, 3)
 
     def test_init_kwargs(self):
         d = DotMap(self._get_dict(), test1=5, test2=6)
         self.assertEqual(d.test1, 5)
         self.assertEqual(d.test2, 6)
+        dm = DotMap(name='Steve', job='programmer')
+        self.assertEqual(dm.name, 'Steve')
+        self.assertEqual(dm['job'], 'programmer')
 
     def test_copy(self):
         d = DotMap(self._get_dict())
@@ -49,28 +54,28 @@ class DotMapTestCase(unittest.TestCase):
         self.assertFalse(d.has_key('f'))
         self.assertFalse('f' in d)
 
+    def test_update(self):
+        d = DotMap(self._get_dict())
+        d.update([('rat', 5),('bum', 4)], dog=7, cat=9)
+        self.assertEqual(d.rat, 5)
+        self.assertEqual(d['bum'], 4)
+        self.assertEqual(d.dog, 7)
+        self.assertEqual(d['cat'], 9)
+        d.update({'lol': 1,'ba': 2})
+        self.assertEqual(d.rat, 5)
+        self.assertEqual(d['bum'], 4)
+        self.assertEqual(d.dog, 7)
+        self.assertEqual(d['cat'], 9)
+
+    def test_to_dict(self):
+        d = DotMap(self._get_dict())
+        o = d.to_dict()
+        self.assertEqual(o['a'], 1)
+
+    def test_values(self):
+        d = DotMap(self._get_dict())
+        v = d.values()
+        self.assertEqual(len(v), 3)
 
 if __name__ == '__main__':
     unittest.main()
-
-a = """	
-
-
-    dd.update([('rat',5),('bum',4)], dog=7,cat=9)
-    dd.update({'lol':1,'ba':2})
-    print(dd)
-    print
-    for k in dd:
-        print(k)
-    print('a' in dd)
-    print('c' in dd)
-    dd.c.a = 1
-    print(dd.toDict())
-    dd.pprint()
-    print
-    print(dd.values())
-    dm = DotMap(name='Steve', job='programmer')
-    print(dm)
-    print(issubclass(dm.__class__, dict))
-
-"""
