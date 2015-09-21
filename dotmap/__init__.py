@@ -138,9 +138,6 @@ class DotMap(MutableMapping):
     def __len__(self):
         return self._map.__len__()
 
-    def clear(self):
-        self._map.clear()
-
     def copy(self):
         return self
 
@@ -159,19 +156,15 @@ class DotMap(MutableMapping):
     def keys(self):
         return self._map.keys()
 
-    def pop(self, key, default=None):
-        return self._map.pop(key, default)
+    # def pop(self, key, default=None):
+    #     return self._map.pop(key, default)
+    #
 
-    def popitem(self):
-        return self._map.popitem()
+    #def popitem(self):
+    #    return self._map.popitem()
 
     def setdefault(self, key, default=None):
         return self._map.setdefault(key, default)
-
-    def update(self, *args, **kwargs):
-        if len(args) != 0:
-            self._map.update(*args)
-        self._map.update(kwargs)
 
     def viewitems(self):
         if version_info.major == 2 and version_info.minor >= 7:
@@ -196,3 +189,4 @@ class DotMap(MutableMapping):
         d = DotMap()
         d._map = OrderedDict.fromkeys(seq, value)
         return d
+

@@ -67,6 +67,8 @@ class DotMapTestCase(unittest.TestCase):
         self.assertEqual(d['bum'], 4)
         self.assertEqual(d.dog, 7)
         self.assertEqual(d['cat'], 9)
+        self.assertEqual(d.lol, 1)
+        self.assertEqual(d['ba'], 2)
 
     def test_to_dict(self):
         d = DotMap(self._get_dict())
@@ -111,6 +113,27 @@ class DotMapTestCase(unittest.TestCase):
         for k in d:
             if k == 'a':
                 self.assertEqual(1, d[k])
+
+    def test_clear(self):
+        d = DotMap(self._get_dict())
+        self.assertEqual(1, d.a)
+        d.clear()
+        self.assertEqual(0, len(d))
+        self.assertEqual(d.a, DotMap())
+
+    def test_pop(self):
+        m = DotMap()
+        m.people.john.age = 32
+        m.people.john.job = 'programmer'
+        m.people.mary.age = 24
+        m.people.mary.job = 'designer'
+        m.people.dave.age = 55
+        m.people.dave.job = 'manager'
+        p = m.people.popitem()
+        self.assertEqual(p[0], 'john')
+        i = m.popitem()
+        self.assertEqual(i[0], 'people')
+        self.assertEqual(0, len(m))
 
 if __name__ == '__main__':
     unittest.main()
