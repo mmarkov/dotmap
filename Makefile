@@ -5,4 +5,5 @@ update:
 	sudo python setup.py sdist upload -r pypi
 
 test:
+	flake8 .
 	nosetests --with-coverage --cover-package=dotmap

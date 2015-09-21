@@ -156,12 +156,8 @@ class DotMap(MutableMapping):
     def keys(self):
         return self._map.keys()
 
-    # def pop(self, key, default=None):
-    #     return self._map.pop(key, default)
-    #
-
-    #def popitem(self):
-    #    return self._map.popitem()
+    def pop(self, key, default=None):
+        return self._map.pop(key, default)
 
     def setdefault(self, key, default=None):
         return self._map.setdefault(key, default)
@@ -189,4 +185,3 @@ class DotMap(MutableMapping):
         d = DotMap()
         d._map = OrderedDict.fromkeys(seq, value)
         return d
-
