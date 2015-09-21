@@ -166,7 +166,7 @@ class DotMap(MutableMapping):
         return self._map.popitem()
 
     def setdefault(self, key, default=None):
-        self._map.setdefault(key, default)
+        return self._map.setdefault(key, default)
 
     def update(self, *args, **kwargs):
         if len(args) != 0:

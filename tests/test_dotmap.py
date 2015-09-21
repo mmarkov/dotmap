@@ -100,5 +100,17 @@ class DotMapTestCase(unittest.TestCase):
         d = DotMap(a='b')
         self.assertEqual("DotMap(a='b')", repr(d))
 
+    def test_setdefault(self):
+        d = DotMap()
+        d.a = 'c'
+        self.assertEqual('c', d.setdefault('a', 'd'))
+        self.assertEqual('d', d.setdefault('b', 'd'))
+
+    def test_iter(self):
+        d = DotMap(self._get_dict())
+        for k in d:
+            if k == 'a':
+                self.assertEqual(1, d[k])
+
 if __name__ == '__main__':
     unittest.main()
