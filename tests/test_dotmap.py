@@ -130,7 +130,7 @@ class DotMapTestCase(unittest.TestCase):
         m.people.dave.age = 55
         m.people.dave.job = 'manager'
         p = m.people.popitem()
-        self.assertEqual(p[0], 'john')
+        self.assertEqual(p[0], 'dave')
         i = m.popitem()
         self.assertEqual(i[0], 'people')
         self.assertEqual(0, len(m))
@@ -141,6 +141,23 @@ class DotMapTestCase(unittest.TestCase):
         self.assertEqual(1, v)
         v = d.pop('a', 4)
         self.assertEqual(4, v)
+
+    def test_eq(self):
+        d = DotMap(self._get_dict())
+        m = DotMap()
+        m.people.john.age = 32
+        m.people.john.job = 'programmer'
+        m.people.mary.age = 24
+        m.people.mary.job = 'designer'
+        m.people.dave.age = 55
+        m.people.dave.job = 'manager'
+        self.assertNotEqual(d,m)
+        m.clear()
+        m.a = 1
+        m.b = 2
+        m.subD.c = 3
+        m.subD.d = 4
+        self.assertEqual(d, m)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,7 +1,10 @@
 ========
 DotMap
 ========
-
+.. image:: https://coveralls.io/repos/mmarkov/dotmap/badge.svg?branch=master&service=github
+	:target: https://coveralls.io/github/mmarkov/dotmap?branch=master
+.. image:: https://travis-ci.org/mmarkov/dotmap.svg?branch=master
+	:target: https://travis-ci.org/mmarkov/dotmap
 :code:`DotMap` is a dot-access :code:`dict` subclass that
 
 * has dynamic child creation

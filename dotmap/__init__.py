@@ -1,4 +1,4 @@
-from collections import OrderedDict
+from sortedcontainers import SortedDict
 from pprint import pprint
 from inspect import ismethod
 from sys import version_info
@@ -12,7 +12,7 @@ else:
 class DotMap(MutableMapping):
 
     def __init__(self, *args, **kwargs):
-        self._map = OrderedDict()
+        self._map = SortedDict()
         if args:
             d = args[0]
             if type(d) is dict:
@@ -39,9 +39,6 @@ class DotMap(MutableMapping):
 
     def __iter__(self):
         return self._map.__iter__()
-
-    def next(self):
-        return self._map.next()
 
     def __setitem__(self, k, v):
         self._map[k] = v
@@ -183,5 +180,5 @@ class DotMap(MutableMapping):
     @classmethod
     def fromkeys(cls, seq, value=None):
         d = DotMap()
-        d._map = OrderedDict.fromkeys(seq, value)
+        d._map = SortedDict.fromkeys(seq, value)
         return d
