@@ -151,7 +151,7 @@ class DotMapTestCase(unittest.TestCase):
         m.people.mary.job = 'designer'
         m.people.dave.age = 55
         m.people.dave.job = 'manager'
-        self.assertNotEqual(d,m)
+        self.assertNotEqual(d, m)
         m.clear()
         m.a = 1
         m.b = 2
